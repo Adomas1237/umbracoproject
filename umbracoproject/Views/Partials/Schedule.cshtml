@@ -1,0 +1,51 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+<section>
+    
+    <h1>Fixed Table header</h1>
+    <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Speaker</th>
+                    <th>Tags</th>
+                    <th>Description</th>
+                    <th>Room</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+               @{
+
+
+                   var session = Model.Content.Site().Descendants<SessionPost>();
+
+                   foreach (var item in session)
+                   {
+                       IEnumerable<IPublishedContent> Speakersname = item.GetPropertyValue<IEnumerable<IPublishedContent>>("speakerSession");
+                    <tr>
+                        <td>@item.AncestorOrSelf("datesPost").GetPropertyValue("dateDates")</td>
+                        <td>no idea </td>
+                        <td>
+                        @foreach (IPublishedContent items in Speakersname)
+                        {
+                            
+                        @items.Name
+                            <br/>
+                            }
+                        
+                            </td>
+                            <td>@item.TagsSession</td>
+                            <td>@item.DescriptionSession</td>
+                            <td>@item.RoomSession</td>
+                    </tr>
+                   }
+            }
+</tbody>
+        </table>
+    </div>
+</section>
