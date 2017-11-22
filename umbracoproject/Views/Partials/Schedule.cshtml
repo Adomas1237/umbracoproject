@@ -24,20 +24,22 @@
 
                    var session = Model.Content.Site().Descendants<SessionPost>();
 
+
                    foreach (var item in session)
                    {
                        IEnumerable<IPublishedContent> Speakersname = item.GetPropertyValue<IEnumerable<IPublishedContent>>("speakerSession");
                     <tr>
-                        <td>@item.AncestorOrSelf("datesPost").GetPropertyValue("dateDates")</td>
-                        <td>no idea </td>
+                        <td>@(item.AncestorOrSelf(3).GetPropertyValue<DateTime>("dateDates").ToString("MM/dd"))</td>
+                        <td>@(item.AncestorOrSelf(4).GetPropertyValue<DateTime>("timeTime").ToString("HH:mm")) </td>
                         <td>
                         @foreach (IPublishedContent items in Speakersname)
                         {
-                            
-                        @items.Name
-                            <br/>
+
+                           @items.GetPropertyValue("SpeakernamePost")
+                               <br/>
                             }
-                        
+
+
                             </td>
                             <td>@item.TagsSession</td>
                             <td>@item.DescriptionSession</td>
@@ -49,3 +51,4 @@
         </table>
     </div>
 </section>
+

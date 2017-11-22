@@ -32,8 +32,8 @@
 </section>
 
 <!-- Price section -->
-<!--
-<section class="flex-half">
+
+@*<section class="flex-half">
     <div style="flex:0 0 40%; position:relative; display: flex; justify-content: center; align-items: center;">
     <img src="/media/1077/price-steps-regular-tickets-600x480.png" title="Codegarden ticket prices" />
     </div>
@@ -46,10 +46,16 @@
 <p>That's why we want to offer the tickets to the fast buyers, cheaper. That makes it easier for us, and easier for you to convince your boss to pay for the ticket.</p>
 
     </div>
-</section>
--->
+</section>*@
 
-<section id="References" class=""
+
+<section id="References" class="">
+    <h2 class="headline">References</h2>
+    @Model.Content.ReferencesPost
+
+</section>
+
+
 <section id="speakers" class="speakers">
     <div class="block">
         <h2 class="headline">Speakers</h2>
@@ -58,21 +64,24 @@
             Come and hear from industry leaders, tinkers and thinkers, covering strategy, case stories, great design and deep dives into the Umbraco core
         </p>
 
+      
+        @Html.Partial("SpeakersFrontpage")
+
+        <p class="abstract">
+            <strong class="addispeakers">New speakers are added every week as we approach Codegarden 2018</strong>
+        </p>
+
+    </div>
+</section>
+
+    <section id="themes" class="themes">
+        <h2 class="headline">Schedule</h2>
+        @Html.Partial("Schedule")
         <p class="abstract">
             <strong class="addispeakers">
                 <a class="button-purple" href="/schedule">See the full schedule</a>
             </strong>
         </p>
-        @Html.Partial("SpeakersFrontpage")
-
-        <p class="abstract">
-            <strong class="addispeakers">New speakers are added every week as we approach Codegarden 2017</strong>
-        </p>
-
-    </div>
-</section>
-    <section id="themes" class="themes">
-        @Html.Partial("Schedule")
         </section>
     <!-- Developer Track Themes -->
     <section id="themes" class="themes">
