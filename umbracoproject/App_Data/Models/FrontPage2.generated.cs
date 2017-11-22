@@ -46,6 +46,33 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Extra
+		///</summary>
+		[ImplementPropertyType("extrafrontpage")]
+		public IEnumerable<IPublishedContent> Extrafrontpage
+		{
+			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("extrafrontpage"); }
+		}
+
+		///<summary>
+		/// Footer text
+		///</summary>
+		[ImplementPropertyType("footerText")]
+		public IHtmlString FooterText
+		{
+			get { return this.GetPropertyValue<IHtmlString>("footerText"); }
+		}
+
+		///<summary>
+		/// Nested content
+		///</summary>
+		[ImplementPropertyType("nestedThemesContent")]
+		public IEnumerable<IPublishedContent> NestedThemesContent
+		{
+			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("nestedThemesContent"); }
+		}
+
+		///<summary>
 		/// References
 		///</summary>
 		[ImplementPropertyType("referencesPost")]
@@ -61,6 +88,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public IHtmlString SummaryPost
 		{
 			get { return this.GetPropertyValue<IHtmlString>("summaryPost"); }
+		}
+
+		///<summary>
+		/// Main Description
+		///</summary>
+		[ImplementPropertyType("themesFrontPageDescription")]
+		public IHtmlString ThemesFrontPageDescription
+		{
+			get { return this.GetPropertyValue<IHtmlString>("themesFrontPageDescription"); }
 		}
 	}
 }
