@@ -3,3 +3,68 @@
 @{
 	Layout = "SiteMaster.cshtml";
 }
+                                                 <section>
+                                                     <h2 class="headline">Schedule</h2>
+
+                                                     <h1>Fixed Table header</h1>
+                                                     <div class="tbl-header">
+                                                         <table cellpadding="0" cellspacing="0" border="0">
+                                                             <thead>
+                                                                 <tr>
+                                                                     <th>Date</th>
+                                                                     <th>Time</th>
+                                                                     <th>Topic</th>
+                                                                     <th>Speaker</th>
+                                                                     <th>Tags</th>
+                                                                     <th>Description</th>
+                                                                     <th>Room</th>
+                                                                 </tr>
+                                                             </thead>
+                                                         </table>
+                                                     </div>
+                                                     <div class="tbl-content">
+                                                         <table cellpadding="0" cellspacing="0" border="0">
+                                                             <tbody>
+                                                                 @{
+
+
+                                                                 var session = Model.Content.Site().Descendants
+                                                                 <SessionPost>
+                                                                     ();
+
+
+                                                                     foreach (var item in session)
+                                                                     {
+                                                                     var date = item.AncestorOrSelf(3).GetPropertyValue<DateTime>
+                                                                         ("dateDates").ToString("MM/dd");
+                                                                         var time = item.AncestorOrSelf(4).GetPropertyValue<DateTime>
+                                                                             ("timeTime").ToString("HH:mm");
+                                                                             IEnumerable<IPublishedContent>
+                                                                                 Speakersname = item.GetPropertyValue<IEnumerable<IPublishedContent>>("speakerSession");
+                    <tr>
+                        <td>@date</td>
+                        <td>@time </td>
+                        <td>@item.TopicSession</td>
+                        <td>
+                        @foreach (IPublishedContent items in Speakersname)
+                        {
+
+                           @items.GetPropertyValue("SpeakernamePost")
+                               <br/>
+                            }
+
+
+                            </td>
+                            <td>@item.TagsSession</td>
+                            <td>@item.DescriptionSession</td>
+                            <td>@item.RoomSession</td>
+                    </tr>
+
+
+                   }
+
+            }
+                                                             </tbody>
+                                                         </table>
+                                                     </div>
+                                                 </section>

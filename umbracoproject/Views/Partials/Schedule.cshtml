@@ -8,6 +8,7 @@
                 <tr>
                     <th>Date</th>
                     <th>Time</th>
+                    <th>Topic</th>
                     <th>Speaker</th>
                     <th>Tags</th>
                     <th>Description</th>
@@ -27,10 +28,13 @@
 
                    foreach (var item in session)
                    {
+                       var date = item.AncestorOrSelf(3).GetPropertyValue<DateTime>("dateDates").ToString("MM/dd");
+                       var time = item.AncestorOrSelf(4).GetPropertyValue<DateTime>("timeTime").ToString("HH:mm");
                        IEnumerable<IPublishedContent> Speakersname = item.GetPropertyValue<IEnumerable<IPublishedContent>>("speakerSession");
                     <tr>
-                        <td>@(item.AncestorOrSelf(3).GetPropertyValue<DateTime>("dateDates").ToString("MM/dd"))</td>
-                        <td>@(item.AncestorOrSelf(4).GetPropertyValue<DateTime>("timeTime").ToString("HH:mm")) </td>
+                        <td>@date</td>
+                        <td>@time </td>
+                        <td>@item.TopicSession</td>
                         <td>
                         @foreach (IPublishedContent items in Speakersname)
                         {
@@ -45,7 +49,10 @@
                             <td>@item.DescriptionSession</td>
                             <td>@item.RoomSession</td>
                     </tr>
+
+
                    }
+
             }
 </tbody>
         </table>

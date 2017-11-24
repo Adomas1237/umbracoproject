@@ -1,0 +1,29 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.PracticalInfo>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = "SiteMaster.cshtml";
+}
+
+    <section id="themes" class="themes">
+        @{
+            var practical = Model.Content.NestedContentPracInfo;
+
+
+            foreach (var item in practical)
+            {
+                <div class="block">
+                    <h2 class="headline">
+                        @item.GetPropertyValue("headlinePractical")
+                    </h2>
+                    <div>
+                        @item.GetPropertyValue("textPractical")
+                    </div>
+
+                </div>
+
+            }
+
+
+            }
+
+</section>
