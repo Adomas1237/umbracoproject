@@ -1,0 +1,45 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.LoginPage>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "SiteMaster.cshtml";
+}
+
+
+    @{
+    Layout = null;
+    if(IsPost)
+    {
+    if(Request["login"] != null)
+    {
+    var un = Request["username"];
+    var pass = Request["password"];
+    if (Members.Login(un, pass))
+    {
+    Response.Redirect("/students/");
+    }
+    }
+    if(Request["create"] != null)
+    {
+    }
+    }
+    }
+    @if(!Members.IsLoggedIn())
+    {
+    <h1>Login</h1>
+    <form action="" method="post">
+        <input type="hidden" name="login" />
+        <input type="text" required name="username" placeholder="Username" /><br /><br />
+        <input type="password" required name="password" placeholder="******" /><br /><br />
+        <button type="submit" class="btn btn-danger">Login</button>
+    </form>
+    <hr />
+    <h2>Create an account</h2>
+    <form method="post">
+        <input type="hidden" name="create" />
+        <input type="text" name="name" value="" required placeholder="Name" /><br /><br />
+        <input type="text" name="username" value="" required placeholder="Username" /><br /><br />
+        <input type="email" name="email" value="" required placeholder="Email" /><br /><br />
+        <input type="password" name="password" value="" required placeholder="*****" /><br /><br />
+        <button type="submit" class="btn btn-danger"> Register</button>
+    </form>
+    }
