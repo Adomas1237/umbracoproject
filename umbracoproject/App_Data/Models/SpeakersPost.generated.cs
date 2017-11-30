@@ -22,7 +22,7 @@ namespace Umbraco.Web.PublishedContentModels
 {
 	/// <summary>Speakers</summary>
 	[PublishedContentModel("speakersPost")]
-	public partial class SpeakersPost : PublishedContentModel, INewSpeakerPost
+	public partial class SpeakersPost : PublishedContentModel
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "speakersPost";
@@ -43,33 +43,6 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<SpeakersPost, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
-		}
-
-		///<summary>
-		/// Description
-		///</summary>
-		[ImplementPropertyType("SpeakerDescriptionPost")]
-		public IHtmlString SpeakerDescriptionPost
-		{
-			get { return Umbraco.Web.PublishedContentModels.NewSpeakerPost.GetSpeakerDescriptionPost(this); }
-		}
-
-		///<summary>
-		/// Name
-		///</summary>
-		[ImplementPropertyType("SpeakernamePost")]
-		public string SpeakernamePost
-		{
-			get { return Umbraco.Web.PublishedContentModels.NewSpeakerPost.GetSpeakernamePost(this); }
-		}
-
-		///<summary>
-		/// Speaker Picture
-		///</summary>
-		[ImplementPropertyType("speakerPicturePost")]
-		public IPublishedContent SpeakerPicturePost
-		{
-			get { return Umbraco.Web.PublishedContentModels.NewSpeakerPost.GetSpeakerPicturePost(this); }
 		}
 	}
 }

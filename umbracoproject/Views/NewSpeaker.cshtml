@@ -1,0 +1,29 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.NewSpeakerPost>
+    @using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "SiteMaster.cshtml";
+    var contentService = ApplicationContext.Current.Services.ContentService;
+    var content = contentService.GetById(Model.Content.Id);
+    var item = Model.Content.VotingScore;
+    if(Request["check"] != null)
+    {
+        content.SetValue("votingScore", item + int.Parse(Request["vote"]));
+        contentService.SaveAndPublishWithStatus(content);
+    }
+}
+
+@* the fun starts here *@
+
+@Model.Content.SpeakernamePost
+
+@Model.Content.SpeakerDescriptionPost
+
+<img src="@Model.Content.SpeakerPicturePost.Url" />
+
+<h1>Vote</h1>
+<form action="" method="get">
+    <input type="hidden" name="check" />
+    <input type="number" max="5" name="vote" placeholder="YourVote" /><br /><br />
+    <button type="submit" class="btn btn-danger">Vote</button>
+</form>
+<hr />

@@ -20,23 +20,9 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedContentModels
 {
-	// Mixin content Type 1081 with alias "newSpeakerPost"
-	/// <summary>NewSpeaker</summary>
-	public partial interface INewSpeakerPost : IPublishedContent
-	{
-		/// <summary>Description</summary>
-		IHtmlString SpeakerDescriptionPost { get; }
-
-		/// <summary>Name</summary>
-		string SpeakernamePost { get; }
-
-		/// <summary>Speaker Picture</summary>
-		IPublishedContent SpeakerPicturePost { get; }
-	}
-
 	/// <summary>NewSpeaker</summary>
 	[PublishedContentModel("newSpeakerPost")]
-	public partial class NewSpeakerPost : PublishedContentModel, INewSpeakerPost
+	public partial class NewSpeakerPost : PublishedContentModel
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "newSpeakerPost";
@@ -65,11 +51,8 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("SpeakerDescriptionPost")]
 		public IHtmlString SpeakerDescriptionPost
 		{
-			get { return GetSpeakerDescriptionPost(this); }
+			get { return this.GetPropertyValue<IHtmlString>("SpeakerDescriptionPost"); }
 		}
-
-		/// <summary>Static getter for Description</summary>
-		public static IHtmlString GetSpeakerDescriptionPost(INewSpeakerPost that) { return that.GetPropertyValue<IHtmlString>("SpeakerDescriptionPost"); }
 
 		///<summary>
 		/// Name
@@ -77,11 +60,8 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("SpeakernamePost")]
 		public string SpeakernamePost
 		{
-			get { return GetSpeakernamePost(this); }
+			get { return this.GetPropertyValue<string>("SpeakernamePost"); }
 		}
-
-		/// <summary>Static getter for Name</summary>
-		public static string GetSpeakernamePost(INewSpeakerPost that) { return that.GetPropertyValue<string>("SpeakernamePost"); }
 
 		///<summary>
 		/// Speaker Picture
@@ -89,10 +69,25 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("speakerPicturePost")]
 		public IPublishedContent SpeakerPicturePost
 		{
-			get { return GetSpeakerPicturePost(this); }
+			get { return this.GetPropertyValue<IPublishedContent>("speakerPicturePost"); }
 		}
 
-		/// <summary>Static getter for Speaker Picture</summary>
-		public static IPublishedContent GetSpeakerPicturePost(INewSpeakerPost that) { return that.GetPropertyValue<IPublishedContent>("speakerPicturePost"); }
+		///<summary>
+		/// voting number
+		///</summary>
+		[ImplementPropertyType("votingNumber")]
+		public int VotingNumber
+		{
+			get { return this.GetPropertyValue<int>("votingNumber"); }
+		}
+
+		///<summary>
+		/// voting score
+		///</summary>
+		[ImplementPropertyType("votingScore")]
+		public int VotingScore
+		{
+			get { return this.GetPropertyValue<int>("votingScore"); }
+		}
 	}
 }
