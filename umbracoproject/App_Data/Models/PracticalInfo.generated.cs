@@ -46,6 +46,15 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Grid practical info
+		///</summary>
+		[ImplementPropertyType("gridPracticalInfo")]
+		public Newtonsoft.Json.Linq.JToken GridPracticalInfo
+		{
+			get { return this.GetPropertyValue<Newtonsoft.Json.Linq.JToken>("gridPracticalInfo"); }
+		}
+
+		///<summary>
 		/// Nested content
 		///</summary>
 		[ImplementPropertyType("nestedContentPracInfo")]

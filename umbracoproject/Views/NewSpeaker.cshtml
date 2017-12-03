@@ -5,11 +5,14 @@
     var contentService = ApplicationContext.Current.Services.ContentService;
     var content = contentService.GetById(Model.Content.Id);
     var item = Model.Content.VotingScore;
-    if(Request["check"] != null)
+    var loginStatusModel = Members.GetCurrentLoginStatus();
+    if (Request["check"] != null && loginStatusModel.IsLoggedIn )
     {
         content.SetValue("votingScore", item + int.Parse(Request["vote"]));
+        content.SetValue("votingNumber", Model.Content.VotingNumber + 1);
         contentService.SaveAndPublishWithStatus(content);
     }
+
 }
 
 @* the fun starts here *@
@@ -23,7 +26,28 @@
 <h1>Vote</h1>
 <form action="" method="get">
     <input type="hidden" name="check" />
-    <input type="number" max="5" name="vote" placeholder="YourVote" /><br /><br />
+    <input class="vote" type="number" max="5" name="vote" placeholder="YourVote" /><br /><br />
     <button type="submit" class="btn btn-danger">Vote</button>
 </form>
 <hr />
+@{ 
+    double score = Model.Content.VotingScore;
+    double number = Model.Content.VotingNumber;
+
+     double average = (score / 2) / (number / 2);
+   
+}
+
+<p>Average @average.ToString("0.00")</p>
+<script>
+    $('.vote').on('keydown keyup', function (e) {
+        if ($(this).val() > 5
+            && e.keyCode != 46 
+            && e.keyCode != 8
+            && e.keyCode < 1
+        ) {
+            e.preventDefault();
+            $(this).val(5);
+        }
+    });
+    </script>
