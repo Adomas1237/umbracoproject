@@ -1,35 +1,42 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 
 
-    @{
-        var speakers = Model.Content.Site().Descendants<NewSpeakerPost>();
+@*speakers start*@
+<div class="heading-block center">
+    <h2>Speakers.</h2>
+    <span>Over 30 Speakers &amp; 1000+ Developers in attendance.</span>
+</div>
 
-        foreach (var item in speakers)
-        {
-            
-        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-        <div class="card">
-            <img class="card-img-top" src="@item.SpeakerPicturePost.Url">
-            <div class="card-block">
-              <a href="@item.Url" > <h4 class="card-title">@item.SpeakernamePost</h4> </a>
-                <div class="meta">
-                    <a href="#">Friends</a>
-                </div>
-                <div class="card-text">
-                    @item.SpeakerDescriptionPost
-                </div>
-            </div>
-            <div class="card-footer">
-                <span class="float-right">Joined in 2013</span>
-                <span><i class=""></i>75 Friends</span>
-            </div>
+
+
+@{
+    var speakers = Model.Content.Site().Descendants<NewSpeakerPost>();
+
+    foreach (var item in speakers)
+    {
+<div class="col_one_fifth" style="    width: 15.8%;
+    margin-left: 2%;
+    margin-right: 2%;">
+
+    <div class="team">
+        <div class="team-image">
+            <img class="portfolio-image" src="@item.SpeakerPicturePost.Url" alt="@item.SpeakernamePost">
+        </div>
+        <div class="team-desc">
+           <a href="@item.Url"> <div class="team-title"><h4>@item.SpeakernamePost</h4></div> </a>
+            <div class="team-content">@item.SpeakerDescriptionPost</div>
         </div>
     </div>
-
-        }
+    </div>
 
     }
 
+}
+
+<div class="clear"></div>
+
+     
+@*speakers end*@
 
 
     

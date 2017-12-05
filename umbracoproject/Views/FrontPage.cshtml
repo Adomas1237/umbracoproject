@@ -3,66 +3,15 @@
 @{
     Layout = "SiteMaster.cshtml";
 }
-
-<section class="flex-half">
-
-    <div class="about-codegarden">
-
-        <h2>23rd - 25th of May, 2018</h2>
-        <p>
+@*
             @Model.Content.SummaryPost
 
 
 
-    </p>
-    <a href="https://shop.umbraco.com/shop/cart/?p=7133&n=963" class="button-purple big">Buy your codegarden ticket now &rarr;</a>
-</div>
-
-
-<div class="codegarden-facts">
-    <a class="twitter-timeline" href="https://twitter.com/codegarden?ref_src=twsrc%5Etfw"
-       data-height="100%"
-  data-chrome="nofooter"
-  data-link-color="#820bbb"
-  data-border-color="#a80000">
-    >Tweets by codegarden</a>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-</div>
-
-</section>
-
-<!-- Price section -->
-
-@*<section class="flex-half">
-    <div style="flex:0 0 40%; position:relative; display: flex; justify-content: center; align-items: center;">
-    <img src="/media/1077/price-steps-regular-tickets-600x480.png" title="Codegarden ticket prices" />
-    </div>
-
-    <div class="description" style="flex: 0 0 60%; padding:0 0 0 20px;">
-
-        <h2>The sooner you book the cheaper it is</h2>
-<p>It is no secret (or surprise) that the sooner we know how many will attend, the better we can plan for the festival. We want to make it all as awesome for you as possible!</p>
-<p> </p>
-<p>That's why we want to offer the tickets to the fast buyers, cheaper. That makes it easier for us, and easier for you to convince your boss to pay for the ticket.</p>
-
-    </div>
-</section>*@
-
-
-<section id="References" class="">
-    <h2 class="headline">References</h2>
     @Model.Content.ReferencesPost
 
-</section>
-
-<section id="themes" class="themes row">
-    <div class="block col-md-8">
-        <h2 class="headline">Codegarden 2018 Themes</h2>
-        <p class="abstract">
             @Model.Content.ThemesFrontPageDescription
-        </p>
-
-        <ul class="track-list">
+     
             @{
                 var Themesinfo = Model.Content.NestedThemesContent;
                 foreach (var item in Themesinfo)
@@ -80,51 +29,12 @@
                 }
             }
 
-        </ul>
-
-    </div>
-    <div class="codegarden-facts col-md-4">
-        <div class="title">What you get</div>
-        <ul>
-            <li>3 full days of Umbraco</li>
-            <li>A ton of amazing sessions</li>
-            <li>Great workshops</li>
-            <li>Lunch and dinner are included in the ticket</li>
-            <li>All the coffee, water and snacks you can handle</li>
-            <li>Social events (meaning we ain't done when the sessions and workshops are!)</li>
-        </ul>
-        <p><a href="https://codegarden18.com/media/1002/convince-your-boss-codegarden18.pdf">Convince your boss!</a></p>
-    </div>
-</section>
-
-<section id="speakers" class="speakers">
-    <div class="block">
-        <h2 class="headline">Speakers</h2>
-        <p class="abstract">
-            This years line-up of speakers is bigger and broader than ever.
-            Come and hear from industry leaders, tinkers and thinkers, covering strategy, case stories, great design and deep dives into the Umbraco core
-        </p>
-
       
         @Html.Partial("SpeakersFrontpage")
 
-        <p class="abstract">
-            <strong class="addispeakers">New speakers are added every week as we approach Codegarden 2018</strong>
-        </p>
 
-    </div>
-</section>
-
-    <section id="schedule" class="themes">   @* Schedule*@
-        <h2 class="headline">Schedule</h2>
         @Html.Partial("Schedule")
-        <p class="abstract">
-            <strong class="addispeakers">
-                <a class="button-purple" href="/schedule">See the full schedule</a>
-            </strong>
-        </p>
-        </section>
-    <!-- Developer Track Themes -->
+       
     
 @{ 
     var extraitems = Model.Content.Extrafrontpage;
@@ -144,7 +54,165 @@
         }
     }
 
+    *@
 
+<section id="slider" class="slider-parallax full-screen dark" style="overflow: hidden; background: url('@Model.Content.BackgroundPicture.Url') no-repeat center center;background-size: cover;">
+
+    <div class="slider-parallax-inner">
+
+        <div class="container clearfix vertical-middle" style="z-index: 3;">
+
+            <div class="heading-block title-center nobottomborder">
+                <h1 style=" text-shadow: 2px 2px #000000;">CodeGarden 18 from May 23 - 25!</h1>
+            </div>
+
+            <div class="center topmargin-lg">
+
+                <a href="https://shop.umbraco.com/shop/cart/?p=7133&n=963" class="button button-3d button-purple button-rounded button-xlarge">Buy Tickets</a>
+                <span class="hidden-xs"> - OR - </span>
+                <a href="/#content" class="button button-3d button-white button-light button-rounded button-xlarge">Read Details</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- Content
+      ============================================= -->
+<section id="content">
+
+    <div class="content-wrap">
+
+        <div class="container clearfix">
+
+            <div class="col_one_third nobottommargin">
+                <div class="feature-box fbox-effect fbox-center fbox-outline fbox-dark nobottomborder">
+                    <div class="fbox-icon">
+                        <a href="#"><i class="icon-calendar i-alt"></i></a>
+                    </div>
+                    <h3>Interactive Sessions</h3>
+                </div>
+            </div>
+
+         
+
+            <div class="col_one_third nobottommargin">
+                <div class="feature-box fbox-effect fbox-center fbox-outline fbox-dark nobottomborder">
+                    <div class="fbox-icon">
+                        <a href="#"><i class="icon-microphone2 i-alt"></i></a>
+                    </div>
+                    <h3>Global Speakers</h3>
+                </div>
+            </div>
+
+            <div class="col_one_third nobottommargin col_last">
+                <div class="feature-box fbox-effect fbox-center fbox-outline fbox-dark nobottomborder">
+                    <div class="fbox-icon">
+                        <a href="#"><i class="icon-food2 i-alt"></i></a>
+                    </div>
+                    <h3>In-between Meals</h3>
+                </div>
+            </div>
+
+            <div class="clear"></div>
+
+            <div class="divider divider-short divider-center"><i class="icon-circle-blank"></i></div>
+
+            <div class="container clearfix">
+
+                <div class="col_one_third bottommargin-sm center">
+                    <a class="twitter-timeline" href="https://twitter.com/codegarden?ref_src=twsrc%5Etfw"data-height="400"
+  data-chrome="nofooter"
+  data-link-color="#820bbb"
+  data-border-color="#0000">
+                    Tweets by codegarden</a>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+
+                <div class="col_two_third bottommargin-sm col_last">
+
+                    <div class="heading-block topmargin-sm">
+                        <h3>You don't want to miss CodeGarden!</h3>
+                    </div>
+                    @Model.Content.SummaryPost
+
+                </div>
+
+            </div>
+                  <div class="divider divider-short divider-center"><i class="icon-circle-blank"></i></div>
+            </div>
+
+            @Html.Partial("SpeakersFrontpage")
+            
+        <div class="section nobottommargin">
+            <div class="container clearfix">
+
+                <div class="heading-block center">
+                    <h3> <span>Schedule</span></h3>
+                </div>
+
+             
+
+            </div>
+        </div>
+@Html.Partial("Schedule")
+
+     
+
+        <div class="section footer-stick notopmargin">
+
+            <h4 class="uppercase center"><span>Attendees</span> Feedback</h4>
+
+            <div class="fslider testimonial testimonial-full" data-animation="fade" data-arrows="false">
+                <div class="flexslider">
+                    <div class="slider-wrap">
+                        <div class="slide">
+                            <div class="testi-image">
+                                <a href="#"><img src="~/Content/images/testimonials/3.jpg" alt="Customer Testimonails"></a>
+                            </div>
+                            <div class="testi-content">
+                                <p>Similique fugit repellendus expedita excepturi iure perferendis provident quia eaque. Repellendus, vero numquam?</p>
+                                <div class="testi-meta">
+                                    Steve Jobs
+                                    <span>Apple Inc.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="testi-image">
+                                <a href="#"><img src="~/Content/images/testimonials/2.jpg" alt="Customer Testimonails"></a>
+                            </div>
+                            <div class="testi-content">
+                                <p>Natus voluptatum enim quod necessitatibus quis expedita harum provident eos obcaecati id culpa corporis molestias.</p>
+                                <div class="testi-meta">
+                                    Collis Ta'eed
+                                    <span>Envato Inc.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="testi-image">
+                                <a href="#"><img src="~/Content/images/testimonials/1.jpg" alt="Customer Testimonails"></a>
+                            </div>
+                            <div class="testi-content">
+                                <p>Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum libero illo rerum!</p>
+                                <div class="testi-meta">
+                                    John Doe
+                                    <span>XYZ Inc.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section><!-- #content end -->
 
 
 
